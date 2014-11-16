@@ -1,0 +1,40 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='res' type='freelance.nunobrito.client.resouces.DotClickResources' />
+	<ui:style>
+	.panel{
+		border-radius: 20px;
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		background: #fff;
+		width: 80%;
+		margin: 5% auto auto;
+		min-height: 600px;
+		padding: 20px;
+		text-align: center;
+		font-size: 2em;
+		color: #999;
+		padding-top: 5%;
+	}
+	.imgProfilePic{
+		border-radius: 100%;
+		background: none repeat scroll 0% 0% rgb(233, 233, 233);
+		width: 250px;
+		height: auto;
+		margin-bottom: 20px;
+	}
+	.desc{
+		font-size: 1em;
+		font-style: italic;
+	}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.panel}">
+		<g:Image ui:field="imgProfilePic" addStyleNames="{style.imgProfilePic}"/>
+		<g:Label ui:field="lblEmail"/>
+		<g:Label ui:field="lblName"/>
+		<g:Label ui:field="lblGender" addStyleNames="{style.desc}"/>
+		<g:Label ui:field="lblCountry"/>
+		<!-- <g:Image resource="{res.ic_facebook}" ui:field="btnFB" title="Visit FB Profile" addStyleNames="{res.dotclickcss.icon}"/> -->
+	</g:HTMLPanel>
+</ui:UiBinder> 

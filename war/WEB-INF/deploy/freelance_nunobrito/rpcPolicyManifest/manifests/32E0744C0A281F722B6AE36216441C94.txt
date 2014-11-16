@@ -1,0 +1,2 @@
+serviceClass: freelance.nunobrito.client.services.UserService
+path: 4F60EBFFAA5E224A87291EA163C38CAF.gwt.rpc

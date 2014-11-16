@@ -1,0 +1,3 @@
+# Module freelance_nunobrito
+# RPC service class, partial path of RPC policy file
+freelance.nunobrito.client.services.UserService, 4F60EBFFAA5E224A87291EA163C38CAF.gwt.rpc
