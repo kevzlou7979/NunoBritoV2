@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Date;
 
 import org.codehaus.jackson.JsonFactory;
 import org.codehaus.jackson.JsonParseException;
@@ -13,6 +14,7 @@ import org.codehaus.jackson.JsonToken;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.googlecode.objectify.Objectify;
+import com.ibm.icu.util.Calendar;
 
 import freelance.nunobrito.client.services.UserService;
 import freelance.nunobrito.shared.User;
@@ -91,6 +93,10 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 			if(existingUser!=null){
 				return existingUser;
 			}else{
+				Calendar c = Calendar.getInstance(); 
+				c.setTime(new Date()); 
+				c.add(Calendar.DATE, 30);
+				user.setPostingDate(c.getTime());
 				ofy.put(user);
 				return user;
 			}
@@ -99,6 +105,11 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 		} catch (final IOException e) {
 			throw e;
 		}
+	}
+	
+	@Override
+	public void updateUser(User user) throws Exception {
+		ofy.put(user);
 	}
 
 	

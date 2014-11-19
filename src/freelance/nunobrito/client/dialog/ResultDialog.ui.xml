@@ -1,0 +1,39 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.inline{
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.img{
+			width: 100px;
+			
+		}
+		.panel{
+			min-width: 300px;
+			text-align: middle;
+			padding: 20px;
+			background: #fff;
+		}
+		.lbl{
+			font-size: 1.3em;
+			color: #898989;
+			margin-left: 50px;
+			margin-right: 50px;
+			width: 300px;
+		}
+		.btnClose{
+			width: 30px;
+			height: 30px;
+			position: absolute;
+			right: 20px;
+			cursor: pointer;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.panel}">
+		<g:Image ui:field="btnClose" url="images/ic_dialog_exit.png" addStyleNames="{style.btnClose}"/>
+		<g:Image ui:field="imgLogo" addStyleNames="{style.inline} {style.img}"/>
+		<g:Label ui:field="lblMessage" addStyleNames="{style.inline} {style.lbl}"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

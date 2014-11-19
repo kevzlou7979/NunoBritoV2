@@ -26,4 +26,6 @@ public interface UserService extends RemoteService {
 	}
 	
 	public User registerUser(String authUrl) throws Exception;
+	
+	public void updateUser(User user) throws Exception;
 }

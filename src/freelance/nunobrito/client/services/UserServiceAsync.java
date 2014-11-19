@@ -12,4 +12,6 @@ public interface UserServiceAsync {
 	
 	public void registerUser(String authUrl, AsyncCallback<User> asyncCallback);
 	
+	public void updateUser(User user, AsyncCallback<Void> callback);
+	
 }

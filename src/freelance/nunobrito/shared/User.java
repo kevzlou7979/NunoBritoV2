@@ -1,6 +1,7 @@
 package freelance.nunobrito.shared;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Id;
 
@@ -18,7 +19,8 @@ public class User implements Serializable {
 	private String profilePic = "";
 	private String country = "";
 	private String facebookUrl = "";
-
+	private Date postingDate = new Date();
+	
 	public User() {
 
 	}
@@ -98,6 +100,14 @@ public class User implements Serializable {
 
 	public void setFacebookUrl(String facebookUrl) {
 		this.facebookUrl = facebookUrl;
+	}
+
+	public Date getPostingDate() {
+		return postingDate;
+	}
+
+	public void setPostingDate(Date postingDate) {
+		this.postingDate = postingDate;
 	}
 
 }

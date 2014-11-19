@@ -1,6 +1,7 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:dp="urn:import:com.google.gwt.user.datepicker.client">
 	<ui:with field='res' type='freelance.nunobrito.client.resouces.DotClickResources' />
 	<ui:style>
 	.panel{
@@ -28,6 +29,39 @@
 		font-size: 1em;
 		font-style: italic;
 	}
+	.btnEdit{
+		width: 25%;
+		display: block;
+		margin: auto;
+		font-size: 0.5em;
+	}
+	.lblPostingDate{
+		font-size: 0.7em;
+		color: #3675e0;
+	}
+	.lblPostingDesc{
+		font-size: 0.5em;
+		color: #3675e0;
+	}	
+	.imgEdit{
+		opacity: 0;
+		transition: 0.5s all;
+		-webkit-transition: 0.5s all;
+		-moz-transition: 0.5s all;
+		width: 40px;
+		vertical-align: top !important;
+		margin-left: 20px;
+		height: auto;
+		cursor: pointer;
+	}
+	.postingDatePanel:hover .imgEdit{
+		opacity: 0.9;
+	}
+	.datePickerAds{
+		margin-top: 20px;
+		width: 25%;
+		margin: auto;
+	}
 	</ui:style>
 	<g:HTMLPanel addStyleNames="{style.panel}">
 		<g:Image ui:field="imgProfilePic" addStyleNames="{style.imgProfilePic}"/>
@@ -35,6 +69,23 @@
 		<g:Label ui:field="lblName"/>
 		<g:Label ui:field="lblGender" addStyleNames="{style.desc}"/>
 		<g:Label ui:field="lblCountry"/>
+		<g:HTMLPanel addStyleNames="{style.postingDatePanel}">
+			<g:Image resource="{res.ic_calendar}" addStyleNames="{res.dotclickcss.inline}"/>
+			<g:HTMLPanel addStyleNames="{res.dotclickcss.inline}">
+				<g:Label ui:field="lblPostingDate" addStyleNames="{style.lblPostingDate}"/>
+				<g:Label text="Next Posting Date" addStyleNames="{style.lblPostingDesc}"/>
+			</g:HTMLPanel>
+			<g:Image resource="{res.ic_edit}" ui:field="btnEdit" title="Edit" addStyleNames="{style.imgEdit} {res.dotclickcss.inline}"/>
+			
+		</g:HTMLPanel>
+		
+		<g:HTMLPanel ui:field="postingDatePanel" addStyleNames="{style.postingDatePanel}">
+			<dp:DatePicker ui:field="datePickerAds" addStyleNames="{style.datePickerAds}"/>
+			<g:Button ui:field="btnUpdatePostingDate" addStyleNames="{res.dotclickcss.dotClickButtonBlue} {style.btnEdit}" text="Update Changes"/>
+			<g:Button ui:field="btnCancelPostingDate" addStyleNames="{res.dotclickcss.dotClickButtonWhite} {style.btnEdit}" text="Cancel"/>
+		</g:HTMLPanel>
+		
+		
 		<!-- <g:Image resource="{res.ic_facebook}" ui:field="btnFB" title="Visit FB Profile" addStyleNames="{res.dotclickcss.icon}"/> -->
 	</g:HTMLPanel>
 </ui:UiBinder> 

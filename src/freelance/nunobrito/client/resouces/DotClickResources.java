@@ -16,6 +16,14 @@ public interface DotClickResources extends ClientBundle {
 	
 	ImageResource ic_facebook();
 	
+	ImageResource ic_calendar();
+	
+	ImageResource ic_error();
+	
+	ImageResource ic_success();
+	
+	ImageResource ic_edit();
+	
 	DotClickCSS dotclickcss();
 
 	DotClickMobileCSS dotclickmobilecss();
