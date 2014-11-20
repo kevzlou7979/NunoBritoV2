@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.codehaus.jackson.JsonFactory;
 import org.codehaus.jackson.JsonParseException;
@@ -17,6 +19,7 @@ import com.googlecode.objectify.Objectify;
 import com.ibm.icu.util.Calendar;
 
 import freelance.nunobrito.client.services.UserService;
+import freelance.nunobrito.shared.Post;
 import freelance.nunobrito.shared.User;
 
 @SuppressWarnings("serial")
@@ -110,6 +113,22 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 	@Override
 	public void updateUser(User user) throws Exception {
 		ofy.put(user);
+	}
+
+	@Override
+	public void savePost(Post post) throws Exception {
+		post.setMessage("Lorem ipsum dolor sit amet, vim commune voluptua no, incorrupte assueverit per te, feugiat dissentias ei vix. Vix ad petentium expetendis reprehendunt, nec ei definiebas efficiantur. Iisque fabulas eu cum, ut eam libris epicuri. Nulla euripidis abhorreant eu duo.");
+		ofy.put(post);
+	}
+
+	@Override
+	public List<Post> getAllUserPost(Long userId) throws Exception {
+		List<Post> posts = new ArrayList<>();
+		for (Post p : ofy.query(Post.class).filter("userId", userId).order("postDate")) {
+			posts.add(p);
+		}
+
+		return posts;
 	}
 
 	

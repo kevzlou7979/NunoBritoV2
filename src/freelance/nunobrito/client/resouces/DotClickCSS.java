@@ -10,4 +10,5 @@ public interface DotClickCSS extends CssResource {
 	String dotClickButtonWhite();
 	String inline();
 	String icon();
+	String transition();
 }

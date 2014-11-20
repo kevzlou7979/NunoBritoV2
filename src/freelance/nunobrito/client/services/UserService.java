@@ -1,10 +1,13 @@
 package freelance.nunobrito.client.services;
 
 
+import java.util.List;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
+import freelance.nunobrito.shared.Post;
 import freelance.nunobrito.shared.User;
 
 /**
@@ -28,4 +31,8 @@ public interface UserService extends RemoteService {
 	public User registerUser(String authUrl) throws Exception;
 	
 	public void updateUser(User user) throws Exception;
-}
+	
+	public void savePost(Post post) throws Exception;
+	
+	public List<Post> getAllUserPost(Long userId) throws Exception;
+} 

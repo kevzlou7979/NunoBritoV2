@@ -62,16 +62,19 @@
 		width: 25%;
 		margin: auto;
 	}
+	.labelPostingPanel{
+		margin-top: 20px;
+		margin-bottom: 10px;
+	}
 	</ui:style>
 	<g:HTMLPanel addStyleNames="{style.panel}">
 		<g:Image ui:field="imgProfilePic" addStyleNames="{style.imgProfilePic}"/>
 		<g:Label ui:field="lblEmail"/>
 		<g:Label ui:field="lblName"/>
-		<g:Label ui:field="lblGender" addStyleNames="{style.desc}"/>
 		<g:Label ui:field="lblCountry"/>
 		<g:HTMLPanel addStyleNames="{style.postingDatePanel}">
-			<g:Image resource="{res.ic_calendar}" addStyleNames="{res.dotclickcss.inline}"/>
-			<g:HTMLPanel addStyleNames="{res.dotclickcss.inline}">
+			
+			<g:HTMLPanel addStyleNames="{style.labelPostingPanel}">
 				<g:Label ui:field="lblPostingDate" addStyleNames="{style.lblPostingDate}"/>
 				<g:Label text="Next Posting Date" addStyleNames="{style.lblPostingDesc}"/>
 			</g:HTMLPanel>

@@ -17,6 +17,13 @@
 	cursor: pointer;
 }
 
+.transition{
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+		
+}
+
 @sprite .loginPanel{
 	gwt-image: 'bg_login';
 	background-color: #3A4264;

@@ -28,7 +28,7 @@ public class ProfilePanel extends Composite  {
 	}
 
 	@UiField Image imgProfilePic;
-	@UiField Label lblName, lblEmail, lblGender, lblCountry, lblPostingDate;
+	@UiField Label lblName, lblEmail, lblCountry, lblPostingDate;
 	@UiField DatePicker datePickerAds;
 	@UiField HTMLPanel postingDatePanel;
 	
@@ -40,13 +40,13 @@ public class ProfilePanel extends Composite  {
 		postingDatePanel.setVisible(false);
 		lblPostingDate.setText(DateTimeFormat.getFormat("MMMM dd, yyyy").format(user.getPostingDate()));
 		datePickerAds.setValue(user.getPostingDate());
+		datePickerAds.setCurrentMonth(user.getPostingDate());
 		
 		if(user.getProfilePic().isEmpty()){
 			imgProfilePic.setResource(DotClickResources.INSTANCE.ic_profile());
 		}else{
 			imgProfilePic.setUrl(user.getProfilePic());
 		}
-		lblGender.setText(user.getGender());
 		lblName.setText(user.getFirstName());
 		lblEmail.setText(user.getEmail());
 	}
