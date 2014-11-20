@@ -28,6 +28,8 @@ public interface DotClickResources extends ClientBundle {
 	
 	ImageResource ic_info();
 	
+	ImageResource ic_post();
+	
 	DotClickCSS dotclickcss();
 
 	DotClickMobileCSS dotclickmobilecss();

@@ -117,7 +117,6 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 
 	@Override
 	public void savePost(Post post) throws Exception {
-		post.setMessage("Lorem ipsum dolor sit amet, vim commune voluptua no, incorrupte assueverit per te, feugiat dissentias ei vix. Vix ad petentium expetendis reprehendunt, nec ei definiebas efficiantur. Iisque fabulas eu cum, ut eam libris epicuri. Nulla euripidis abhorreant eu duo.");
 		ofy.put(post);
 	}
 

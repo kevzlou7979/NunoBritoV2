@@ -28,9 +28,24 @@
 	.menu{
 		opacity: 0.6;
 		margin-right: 20px;
+		position: relative;
 	}
 	.menu:hover{
 		opacity: 1;
+	}
+	.lblNoPost{
+		position: absolute;
+		bottom: 0px;
+		right: 0px;
+		background: none repeat scroll 0% 0% red;
+		border-radius: 100% 100% 100% 100%;
+		-webkit-border-radius: 100% 100% 100% 100%;
+		-moz-border-radius: 100% 100% 100% 100%;
+		padding: 5px;
+		height: auto;
+		text-align: center;
+		font-size: 0.6em;
+		border: 2px solid #fff;
 	}
 	</ui:style>
 	<g:HTMLPanel>
@@ -38,7 +53,8 @@
 		    <g:Label text="DotClick" addStyleNames="{res.dotclickcss.inline} {style.logo}"/>
 		    <g:HTMLPanel addStyleNames="{res.dotclickcss.inline} {style.info}">
 		        <g:HTMLPanel addStyleNames="{res.dotclickcss.inline} {style.menu}">
-		        	<g:Image ui:field="imgBell" title="See Posts" resource="{res.ic_bell} {res.dotclickcss.transition}" />
+		        	<g:Image ui:field="imgBell" title="See Posts" resource="{res.ic_post}" addStyleNames="{res.dotclickcss.transition}"/>
+		        	<g:Label ui:field="lblNoPost" text="1" addStyleNames="{style.lblNoPost}"/>
 		        </g:HTMLPanel>
 		        <g:Image ui:field="imgProfilePic" addStyleNames="{res.dotclickcss.inline} {style.imgProfilePic}"/>
 		        <g:Label ui:field="lblEmail" addStyleNames="{res.dotclickcss.inline} {style.lblEmail}"/>

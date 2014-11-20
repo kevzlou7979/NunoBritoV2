@@ -1,10 +1,14 @@
 package freelance.nunobrito.client.page;
 
+import java.util.Date;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Image;
@@ -14,6 +18,8 @@ import com.google.gwt.user.client.ui.Widget;
 
 import freelance.nunobrito.client.panel.ProfilePanel;
 import freelance.nunobrito.client.resouces.DotClickResources;
+import freelance.nunobrito.client.services.UserService;
+import freelance.nunobrito.shared.Post;
 import freelance.nunobrito.shared.User;
 
 public class MainPage extends Composite  {
@@ -40,6 +46,7 @@ public class MainPage extends Composite  {
 		
 		lblEmail.setText(user.getEmail());
 		loadProfilePanel();
+		checkPost();
 	}
 	
 	private void loadProfilePanel() {
@@ -58,6 +65,22 @@ public class MainPage extends Composite  {
 		RootPanel.get().add(new LoginPage());
 	}
 	
+	private void checkPost(){
+		if(user.getPostingDate().after(new Date())){
+			UserService.Connect.getService().savePost(new Post(user.getId(), "Lorem ipsum dolor sit amet, vim commune voluptua no, incorrupte assueverit per te, feugiat dissentias ei vix. Vix ad petentium expetendis reprehendunt, nec ei definiebas efficiantur. Iisque fabulas eu cum, ut eam libris epicuri. Nulla euripidis abhorreant eu duo.", "path"), new AsyncCallback<Void>() {
+				
+				@Override
+				public void onSuccess(Void result) {
+					
+				}
+				
+				@Override
+				public void onFailure(Throwable caught) {
+					Window.alert(caught.getMessage());
+				}
+			});
+		}
+	}
 	
 
 }

@@ -110,4 +110,14 @@ public class User implements Serializable {
 		this.postingDate = postingDate;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	
+
 }
