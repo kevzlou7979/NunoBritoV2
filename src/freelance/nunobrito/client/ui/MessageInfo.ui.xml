@@ -11,8 +11,12 @@
 		font-size: 1.5em;
 		color: #c8c8c8;
 	}
+	.panel{
+		text-align: center;
+		margin-top: 20%;
+	}
 	</ui:style>
-	<g:HTMLPanel>
+	<g:HTMLPanel addStyleNames="{style.panel}">
 		<g:Image resource="{res.ic_info}"/>
 		<g:Label ui:field="lblTitle" addStyleNames="{style.title}"/>
 		<g:Label ui:field="lblDescription" addStyleNames="{style.desc}"/>

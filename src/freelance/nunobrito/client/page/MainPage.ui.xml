@@ -26,35 +26,41 @@
 		height: auto;
 	}
 	.menu{
-		opacity: 0.6;
 		margin-right: 20px;
 		position: relative;
+		cursor: pointer;
 	}
 	.menu:hover{
-		opacity: 1;
+		background: #fff;
+		border-radius: 10px;
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
 	}
 	.lblNoPost{
 		position: absolute;
-		bottom: 0px;
-		right: 0px;
+		top: 0px;
+		right: 10px;
 		background: none repeat scroll 0% 0% red;
 		border-radius: 100% 100% 100% 100%;
 		-webkit-border-radius: 100% 100% 100% 100%;
 		-moz-border-radius: 100% 100% 100% 100%;
-		padding: 5px;
+		padding: 8px;
 		height: auto;
 		text-align: center;
 		font-size: 0.6em;
-		border: 2px solid #fff;
+		border: 3px solid #fff;
+	}
+	.menuPanel{
+		position: relative;
 	}
 	</ui:style>
 	<g:HTMLPanel>
 		<g:HTMLPanel addStyleNames="{style.header}">
 		    <g:Label text="DotClick" addStyleNames="{res.dotclickcss.inline} {style.logo}"/>
 		    <g:HTMLPanel addStyleNames="{res.dotclickcss.inline} {style.info}">
-		        <g:HTMLPanel addStyleNames="{res.dotclickcss.inline} {style.menu}">
-		        	<g:Image ui:field="imgBell" title="See Posts" resource="{res.ic_post}" addStyleNames="{res.dotclickcss.transition}"/>
-		        	<g:Label ui:field="lblNoPost" text="1" addStyleNames="{style.lblNoPost}"/>
+		        <g:HTMLPanel addStyleNames="{res.dotclickcss.inline} {style.menuPanel}">
+		        	<g:Image ui:field="menuPost" title="See Posts" resource="{res.ic_post}" addStyleNames="{res.dotclickcss.transition} {style.menu}"/>
+		        	<g:Label ui:field="lblNoPost"  addStyleNames="{style.lblNoPost}"/>
 		        </g:HTMLPanel>
 		        <g:Image ui:field="imgProfilePic" addStyleNames="{res.dotclickcss.inline} {style.imgProfilePic}"/>
 		        <g:Label ui:field="lblEmail" addStyleNames="{res.dotclickcss.inline} {style.lblEmail}"/>

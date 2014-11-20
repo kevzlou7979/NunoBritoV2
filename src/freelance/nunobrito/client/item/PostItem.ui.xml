@@ -1,0 +1,35 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='res' type='freelance.nunobrito.client.resouces.DotClickResources' />
+	<ui:style>
+		.imgPost{
+			width: 100%;
+			height: auto;
+		}
+		.panel{
+			width: 50%;
+			padding: 30px;
+			background: none repeat scroll 0% 0% rgb(255, 255, 255);
+			text-align: center;
+			margin: 20px auto 20px;
+		}
+		.lblMessage{
+			padding: 10px;
+			color: #555;
+			font-size: 1.2em;
+		}
+		.lblTime{
+			text-align: left;
+			color: #999;
+			padding-bottom: 10px;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="{style.panel}">
+	    <g:Label ui:field="lblTime" addStyleNames="{style.lblTime}"/>
+	    <g:Image resource="{res.bg_login}" addStyleNames="{style.imgPost}"/>
+	    <g:Label ui:field="lblMessage" addStyleNames="{style.lblMessage}"/>
+	    
+	    
+	</g:HTMLPanel>
+</ui:UiBinder> 

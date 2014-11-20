@@ -32,7 +32,7 @@ public interface UserService extends RemoteService {
 	
 	public void updateUser(User user) throws Exception;
 	
-	public void savePost(Post post) throws Exception;
+	public User savePost(Post post) throws Exception;
 	
 	public List<Post> getAllUserPost(Long userId) throws Exception;
 } 

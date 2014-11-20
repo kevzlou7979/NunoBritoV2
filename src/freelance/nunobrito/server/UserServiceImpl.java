@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -16,7 +17,6 @@ import org.codehaus.jackson.JsonToken;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.googlecode.objectify.Objectify;
-import com.ibm.icu.util.Calendar;
 
 import freelance.nunobrito.client.services.UserService;
 import freelance.nunobrito.shared.Post;
@@ -116,17 +116,25 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 	}
 
 	@Override
-	public void savePost(Post post) throws Exception {
+	public User savePost(Post post) throws Exception {
+		User user = ofy.query(User.class).filter("id", post.getUserId()).get();
+		
+		Calendar c = Calendar.getInstance(); 
+		c.setTime(user.getPostingDate()); 
+		c.add(Calendar.DATE, 30);
+		user.setPostingDate(c.getTime());
+		ofy.put(user);
 		ofy.put(post);
+		return user;
 	}
 
 	@Override
 	public List<Post> getAllUserPost(Long userId) throws Exception {
 		List<Post> posts = new ArrayList<>();
-		for (Post p : ofy.query(Post.class).filter("userId", userId).order("postDate")) {
+		for (Post p : ofy.query(Post.class).filter("userId", userId).order("-postDate")) {
 			posts.add(p);
 		}
-
+	
 		return posts;
 	}
 

@@ -16,6 +16,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
+import freelance.nunobrito.client.panel.PostPanel;
 import freelance.nunobrito.client.panel.ProfilePanel;
 import freelance.nunobrito.client.resouces.DotClickResources;
 import freelance.nunobrito.client.services.UserService;
@@ -30,8 +31,8 @@ public class MainPage extends Composite  {
 	interface MainPageUiBinder extends UiBinder<Widget, MainPage> {
 	}
 
-	@UiField Image imgProfilePic;
-	@UiField Label lblEmail;
+	@UiField Image imgProfilePic, menuPost;
+	@UiField Label lblEmail, lblNoPost;
 	@UiField HTMLPanel bodyPanel;
 	private User user;
 	
@@ -45,18 +46,30 @@ public class MainPage extends Composite  {
 		}
 		
 		lblEmail.setText(user.getEmail());
-		loadProfilePanel();
+		loadProfilePanel(user);
 		checkPost();
+		initUI();
 	}
 	
-	private void loadProfilePanel() {
+	private void initUI() {
+		lblNoPost.setVisible(false);
+	}
+
+	private void loadProfilePanel(User user) {
 		bodyPanel.clear();
 		bodyPanel.add(new ProfilePanel(user));
+	}
+	
+	private void loadPostPanel(){
+		menuPost.removeStyleName(DotClickResources.INSTANCE.dotclickcss().activeMenu());
+		lblNoPost.setVisible(false);
+		bodyPanel.clear();
+		bodyPanel.add(new PostPanel(this));
 	}
 
 	@UiHandler("lblEmail")
 	void onSeeProfile(ClickEvent e){
-		loadProfilePanel();
+		loadProfilePanel(user);
 	}
 
 	@UiHandler("btnLogout")
@@ -65,13 +78,21 @@ public class MainPage extends Composite  {
 		RootPanel.get().add(new LoginPage());
 	}
 	
+	@UiHandler("menuPost")
+	void onMenuPost(ClickEvent e){
+		loadPostPanel();
+	}
+	
 	private void checkPost(){
-		if(user.getPostingDate().after(new Date())){
-			UserService.Connect.getService().savePost(new Post(user.getId(), "Lorem ipsum dolor sit amet, vim commune voluptua no, incorrupte assueverit per te, feugiat dissentias ei vix. Vix ad petentium expetendis reprehendunt, nec ei definiebas efficiantur. Iisque fabulas eu cum, ut eam libris epicuri. Nulla euripidis abhorreant eu duo.", "path"), new AsyncCallback<Void>() {
+		if(new Date().after(user.getPostingDate())){
+			UserService.Connect.getService().savePost(new Post(user.getId(), "Lorem ipsum dolor sit amet, vim commune voluptua no, incorrupte assueverit per te, feugiat dissentias ei vix. Vix ad petentium expetendis reprehendunt, nec ei definiebas efficiantur. Iisque fabulas eu cum, ut eam libris epicuri. Nulla euripidis abhorreant eu duo.", "path"), new AsyncCallback<User>() {
 				
 				@Override
-				public void onSuccess(Void result) {
-					
+				public void onSuccess(User result) {
+					MainPage.this.user = result;
+					menuPost.addStyleName(DotClickResources.INSTANCE.dotclickcss().activeMenu());
+					lblNoPost.setVisible(true);
+					loadProfilePanel(result);
 				}
 				
 				@Override
@@ -81,6 +102,16 @@ public class MainPage extends Composite  {
 			});
 		}
 	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	
 	
 
 }

@@ -17,7 +17,7 @@ public interface UserServiceAsync {
 	
 	public void updateUser(User user, AsyncCallback<Void> callback);
 	
-	public void savePost(Post post, AsyncCallback<Void> callback) ;
+	public void savePost(Post post, AsyncCallback<User> asyncCallback) ;
 	
 	public void getAllUserPost(Long userId, AsyncCallback<List<Post>> callback);
 	
