@@ -62,6 +62,10 @@ public class MainPage extends Composite  {
 		bodyPanel.add(postPanel);
 	}
 	
+	@UiHandler("lblHomePage")
+	void onHomePage(ClickEvent e){
+		initPanels(user);
+	}
 
 	@UiHandler("lblEmail")
 	void onSeeProfile(ClickEvent e){

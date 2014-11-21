@@ -20,11 +20,12 @@
 		position: fixed;
 		height: 85%;
 		margin: 1%;	
+		overflow: auto;
 	}
 	.imgProfilePic{
 		border-radius: 100%;
 		background: none repeat scroll 0% 0% rgb(233, 233, 233);
-		width: 150px;
+		width: 80px;
 		height: auto;
 		margin-bottom: 20px;
 	}
@@ -47,7 +48,6 @@
 		color: #3675e0;
 	}	
 	.imgEdit{
-		opacity: 0;
 		transition: 0.5s all;
 		-webkit-transition: 0.5s all;
 		-moz-transition: 0.5s all;
@@ -56,9 +56,6 @@
 		height: auto;
 		cursor: pointer;
 		margin-bottom: 10px;
-	}
-	.postingDatePanel:hover .imgEdit{
-		opacity: 0.9;
 	}
 	.datePickerAds{
 		margin-top: 20px;
@@ -75,7 +72,7 @@
 		<g:Label ui:field="lblEmail"/>
 		<g:Label ui:field="lblName"/>
 		<g:Label ui:field="lblCountry"/>
-		<g:HTMLPanel addStyleNames="{style.postingDatePanel}">
+		<g:HTMLPanel>
 			
 			<g:HTMLPanel addStyleNames="{style.labelPostingPanel}">
 				<g:Label ui:field="lblPostingDate" addStyleNames="{style.lblPostingDate}"/>
@@ -85,7 +82,7 @@
 			
 		</g:HTMLPanel>
 		
-		<g:HTMLPanel ui:field="postingDatePanel" addStyleNames="{style.postingDatePanel}">
+		<g:HTMLPanel ui:field="postingDatePanel">
 			<dp:DatePicker ui:field="datePickerAds" addStyleNames="{style.datePickerAds}"/>
 			<g:Button ui:field="btnUpdatePostingDate" addStyleNames="{res.dotclickcss.dotClickButtonBlue} {style.btnEdit}" text="Update Changes"/>
 			<g:Button ui:field="btnCancelPostingDate" addStyleNames="{res.dotclickcss.dotClickButtonWhite} {style.btnEdit}" text="Cancel"/>

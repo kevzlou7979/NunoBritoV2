@@ -67,17 +67,23 @@
 	.menuProfile{
 		text-align: center;
 	}
+	.logout{
+		margin-top: -30px;
+	}
+	.lblHomePage{
+		cursor: pointer;
+	}
 	</ui:style>
 	<g:HTMLPanel>
 		<g:HTMLPanel addStyleNames="{style.header}">
-		    <g:Label text="DotClick" addStyleNames="{res.dotclickcss.inline} {style.logo}"/>
+		    <g:Label ui:field="lblHomePage" text="DotClick" addStyleNames="{res.dotclickcss.inline} {style.logo} {style.lblHomePage}"/>
 		    <g:HTMLPanel addStyleNames="{res.dotclickcss.inline} {style.info}">
 		        <g:HTMLPanel addStyleNames="{res.dotclickcss.inline} {style.menuProfile}">
 		        	 <g:Image ui:field="imgProfilePic" addStyleNames="{style.imgProfilePic}"/>
 		        	<g:Label ui:field="lblEmail" addStyleNames="{style.lblEmail}"/>
 		        </g:HTMLPanel>
 		       
-		   		<g:Image title="Logout" resource="{res.ic_logout}" ui:field="btnLogout" addStyleNames="{res.dotclickcss.inline} {res.dotclickcss.icon}"/>
+		   		<g:Image title="Logout" resource="{res.ic_logout}" ui:field="btnLogout" addStyleNames="{res.dotclickcss.inline} {res.dotclickcss.icon} {style.logout}"/>
 		    </g:HTMLPanel>
 		</g:HTMLPanel>
 		<g:HTMLPanel ui:field="bodyPanel" addStyleNames="{style.bodyPanel}"/>

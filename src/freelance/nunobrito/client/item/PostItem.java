@@ -23,7 +23,7 @@ public class PostItem extends Composite {
 	public PostItem(Post post) {
 		initWidget(uiBinder.createAndBindUi(this));
 		lblMessage.setText(post.getMessage());
-		lblTime.setText(new TimeChecker(post.getPostDate()).getTimePassed());
-	}
+		lblTime.setText("Published " + new TimeChecker(post.getPostDate()).getTimePassed());
+	} 
 
 }
