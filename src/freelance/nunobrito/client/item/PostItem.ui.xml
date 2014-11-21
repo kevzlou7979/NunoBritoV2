@@ -8,7 +8,7 @@
 			height: auto;
 		}
 		.panel{
-			width: 50%;
+			width: 70%;
 			padding: 30px;
 			background: none repeat scroll 0% 0% rgb(255, 255, 255);
 			text-align: center;

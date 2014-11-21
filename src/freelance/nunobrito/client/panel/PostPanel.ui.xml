@@ -1,14 +1,17 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='res' type='freelance.nunobrito.client.resouces.DotClickResources' />
 	<ui:style>
-	.important {
-		font-weight: bold;
+	.panel{
+		width: 80%;
+		margin-left: 300px;
+	}
+	.postContentPanel{
+		width: 100%;
 	}
 	</ui:style>
-	<g:HTMLPanel>
-	    
-	    <g:HTMLPanel ui:field="postContentPanel"/>
-		
+	<g:HTMLPanel addStyleNames="{res.dotclickcss.inline} {style.panel}">
+	    <g:HTMLPanel ui:field="postContentPanel" addStyleNames="{style.postContentPanel}"/>
 	</g:HTMLPanel>
 </ui:UiBinder> 

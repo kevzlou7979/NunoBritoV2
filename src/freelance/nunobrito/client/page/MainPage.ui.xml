@@ -7,6 +7,10 @@
 		background: #3b5998;
 		padding: 20px;
 		color: #fff;
+		position: fixed;
+		width: 100%;
+		z-index: 999;
+		height: 50px;
 	}
 	.logo{
 		width: 19%;
@@ -22,8 +26,11 @@
 		cursor: pointer;
 	}
 	.imgProfilePic{
-		width: 60px;
+		width: 40px;
 		height: auto;
+	}
+	.imgProfilePic:hover{
+		cursor: pointer;
 	}
 	.menu{
 		margin-right: 20px;
@@ -53,20 +60,26 @@
 	.menuPanel{
 		position: relative;
 	}
+	.bodyPanel{
+		margin-top: 100px;
+		position: absolute;
+	}
+	.menuProfile{
+		text-align: center;
+	}
 	</ui:style>
 	<g:HTMLPanel>
 		<g:HTMLPanel addStyleNames="{style.header}">
 		    <g:Label text="DotClick" addStyleNames="{res.dotclickcss.inline} {style.logo}"/>
 		    <g:HTMLPanel addStyleNames="{res.dotclickcss.inline} {style.info}">
-		        <g:HTMLPanel addStyleNames="{res.dotclickcss.inline} {style.menuPanel}">
-		        	<g:Image ui:field="menuPost" title="See Posts" resource="{res.ic_post}" addStyleNames="{res.dotclickcss.transition} {style.menu}"/>
-		        	<g:Label ui:field="lblNoPost"  addStyleNames="{style.lblNoPost}"/>
+		        <g:HTMLPanel addStyleNames="{res.dotclickcss.inline} {style.menuProfile}">
+		        	 <g:Image ui:field="imgProfilePic" addStyleNames="{style.imgProfilePic}"/>
+		        	<g:Label ui:field="lblEmail" addStyleNames="{style.lblEmail}"/>
 		        </g:HTMLPanel>
-		        <g:Image ui:field="imgProfilePic" addStyleNames="{res.dotclickcss.inline} {style.imgProfilePic}"/>
-		        <g:Label ui:field="lblEmail" addStyleNames="{res.dotclickcss.inline} {style.lblEmail}"/>
+		       
 		   		<g:Image title="Logout" resource="{res.ic_logout}" ui:field="btnLogout" addStyleNames="{res.dotclickcss.inline} {res.dotclickcss.icon}"/>
 		    </g:HTMLPanel>
 		</g:HTMLPanel>
-		<g:HTMLPanel ui:field="bodyPanel"/>
+		<g:HTMLPanel ui:field="bodyPanel" addStyleNames="{style.bodyPanel}"/>
 	</g:HTMLPanel>
 </ui:UiBinder> 

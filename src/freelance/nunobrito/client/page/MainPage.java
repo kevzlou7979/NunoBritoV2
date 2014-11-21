@@ -16,6 +16,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
+import freelance.nunobrito.client.item.PostItem;
 import freelance.nunobrito.client.panel.PostPanel;
 import freelance.nunobrito.client.panel.ProfilePanel;
 import freelance.nunobrito.client.resouces.DotClickResources;
@@ -31,10 +32,12 @@ public class MainPage extends Composite  {
 	interface MainPageUiBinder extends UiBinder<Widget, MainPage> {
 	}
 
-	@UiField Image imgProfilePic, menuPost;
-	@UiField Label lblEmail, lblNoPost;
+	@UiField Image imgProfilePic;
+	@UiField Label lblEmail;
 	@UiField HTMLPanel bodyPanel;
 	private User user;
+	private PostPanel postPanel;
+	private ProfilePanel profilePanel;
 	
 	public MainPage(User user) {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -46,30 +49,28 @@ public class MainPage extends Composite  {
 		}
 		
 		lblEmail.setText(user.getEmail());
-		loadProfilePanel(user);
+		
 		checkPost();
-		initUI();
 	}
 	
-	private void initUI() {
-		lblNoPost.setVisible(false);
-	}
-
-	private void loadProfilePanel(User user) {
+	
+	private void initPanels(User user) {
 		bodyPanel.clear();
-		bodyPanel.add(new ProfilePanel(user));
+		profilePanel = new ProfilePanel(user);
+		postPanel = new PostPanel(this);
+		bodyPanel.add(profilePanel);
+		bodyPanel.add(postPanel);
 	}
 	
-	private void loadPostPanel(){
-		menuPost.removeStyleName(DotClickResources.INSTANCE.dotclickcss().activeMenu());
-		lblNoPost.setVisible(false);
-		bodyPanel.clear();
-		bodyPanel.add(new PostPanel(this));
-	}
 
 	@UiHandler("lblEmail")
 	void onSeeProfile(ClickEvent e){
-		loadProfilePanel(user);
+		initPanels(user);
+	}
+	
+	@UiHandler("imgProfilePic")
+	void onProfile(ClickEvent e){
+		initPanels(user);
 	}
 
 	@UiHandler("btnLogout")
@@ -78,21 +79,15 @@ public class MainPage extends Composite  {
 		RootPanel.get().add(new LoginPage());
 	}
 	
-	@UiHandler("menuPost")
-	void onMenuPost(ClickEvent e){
-		loadPostPanel();
-	}
-	
 	private void checkPost(){
 		if(new Date().after(user.getPostingDate())){
-			UserService.Connect.getService().savePost(new Post(user.getId(), "Lorem ipsum dolor sit amet, vim commune voluptua no, incorrupte assueverit per te, feugiat dissentias ei vix. Vix ad petentium expetendis reprehendunt, nec ei definiebas efficiantur. Iisque fabulas eu cum, ut eam libris epicuri. Nulla euripidis abhorreant eu duo.", "path"), new AsyncCallback<User>() {
+			final Post post = new Post(user.getId(), "Lorem ipsum dolor sit amet, vim commune voluptua no, incorrupte assueverit per te, feugiat dissentias ei vix. Vix ad petentium expetendis reprehendunt, nec ei definiebas efficiantur. Iisque fabulas eu cum, ut eam libris epicuri. Nulla euripidis abhorreant eu duo.", "path");
+			UserService.Connect.getService().savePost(post, new AsyncCallback<User>() {
 				
 				@Override
 				public void onSuccess(User result) {
-					MainPage.this.user = result;
-					menuPost.addStyleName(DotClickResources.INSTANCE.dotclickcss().activeMenu());
-					lblNoPost.setVisible(true);
-					loadProfilePanel(result);
+					initPanels(result);
+					postPanel.getPostContentPanel().add(new PostItem(post));
 				}
 				
 				@Override
@@ -100,6 +95,8 @@ public class MainPage extends Composite  {
 					Window.alert(caught.getMessage());
 				}
 			});
+		}else{
+			initPanels(user);
 		}
 	}
 

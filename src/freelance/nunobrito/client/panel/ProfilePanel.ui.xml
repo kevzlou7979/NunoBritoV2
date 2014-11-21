@@ -10,18 +10,21 @@
 		-moz-border-radius: 10px;
 		background: #fff;
 		width: 80%;
-		margin: 5% auto auto;
-		min-height: 600px;
 		padding: 20px;
 		text-align: center;
-		font-size: 2em;
+		font-size: 1.4em;
 		color: #999;
 		padding-top: 5%;
+		width: 300px;
+		vertical-align: top;
+		position: fixed;
+		height: 85%;
+		margin: 1%;	
 	}
 	.imgProfilePic{
 		border-radius: 100%;
 		background: none repeat scroll 0% 0% rgb(233, 233, 233);
-		width: 250px;
+		width: 150px;
 		height: auto;
 		margin-bottom: 20px;
 	}
@@ -30,7 +33,7 @@
 		font-style: italic;
 	}
 	.btnEdit{
-		width: 25%;
+		width: 90%;
 		display: block;
 		margin: auto;
 		font-size: 0.5em;
@@ -50,16 +53,16 @@
 		-moz-transition: 0.5s all;
 		width: 40px;
 		vertical-align: top !important;
-		margin-left: 20px;
 		height: auto;
 		cursor: pointer;
+		margin-bottom: 10px;
 	}
 	.postingDatePanel:hover .imgEdit{
 		opacity: 0.9;
 	}
 	.datePickerAds{
 		margin-top: 20px;
-		width: 25%;
+		width: 90%;
 		margin: auto;
 	}
 	.labelPostingPanel{
@@ -67,7 +70,7 @@
 		margin-bottom: 10px;
 	}
 	</ui:style>
-	<g:HTMLPanel addStyleNames="{style.panel}">
+	<g:HTMLPanel addStyleNames="{style.panel} {res.dotclickcss.inline}">
 		<g:Image ui:field="imgProfilePic" addStyleNames="{style.imgProfilePic}"/>
 		<g:Label ui:field="lblEmail"/>
 		<g:Label ui:field="lblName"/>

@@ -12,8 +12,10 @@
 		color: #c8c8c8;
 	}
 	.panel{
+		width: 100%;
 		text-align: center;
 		margin-top: 20%;
+		margin-left: 50%;
 	}
 	</ui:style>
 	<g:HTMLPanel addStyleNames="{style.panel}">

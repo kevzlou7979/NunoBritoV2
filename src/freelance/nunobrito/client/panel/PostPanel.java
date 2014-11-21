@@ -31,7 +31,7 @@ public class PostPanel extends Composite {
 		getAllUserPost(mainPage.getUser());
 	}
 	
-	private void getAllUserPost(User user){
+	public void getAllUserPost(User user){
 		postContentPanel.clear();
 		UserService.Connect.getService().getAllUserPost(user.getId(), new AsyncCallback<List<Post>>() {
 			
@@ -52,6 +52,14 @@ public class PostPanel extends Composite {
 				
 			}
 		});
+	}
+
+	public HTMLPanel getPostContentPanel() {
+		return postContentPanel;
+	}
+
+	public void setPostContentPanel(HTMLPanel postContentPanel) {
+		this.postContentPanel = postContentPanel;
 	}
 	
 }
